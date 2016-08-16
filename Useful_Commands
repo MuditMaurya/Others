@@ -1,0 +1,8 @@
+#ShellShare Allows you to broadcast your terminal live with a single command.
+#Start with this
+$ wget -qO shellshare http://get.shellshare.net
+$ python shellshare
+# || python shellshare --room my-shell --password my-password
+#When Done , hit CTRL+D
+$ exit
+#For more info visit https://shellshare.net/
