@@ -76,8 +76,12 @@ post)
         else
             #Inserting Into Table blog(DB)>post(structure)
             echo "Adding POST"
-            sqlite3 $dbname "INSERT INTO post(title , content) VALUES( '$3' , '$4')";
-            
+            if sqlite3 $dbname "INSERT INTO post(title , content) VALUES( '$3' , '$4')";
+            then
+                echo "Successfully added the post"
+            else
+                echo "Something went wrong ! "
+            fi
         fi
         ;;
     list)
@@ -109,12 +113,37 @@ category)
     case $2 in
     add)
         echo "Add category : $3"
+        if sqlite3 $dbname "INSERT INTO category (name) VALUES ('$3');"
+        then
+            echo "Successfully Added the Category"
+        else
+            echo "Something Went Wrong !"
+        fi
         ;;
+    # Calling Category -> List
     list)
         echo "List Categories"
+        #making query to list all the Categories along with their ID
+        CAT_LIST=`sqlite3 $dbname 'SELECT cat_id,name FROM category'`;
+        #for each of the Categories
+        echo -e "Category ID-->Name \n"
+        for cats in $CAT_LIST;
+        do
+            #Since sqlite3 returns a pipe seperated string
+            cat_id=`echo $cats | awk '{split($0,cat,"|"); print cat[1]}'`
+            cat_name=`echo $cats | awk '{split($0,cat,"|");print cat[2]}'`
+            #Printing the posts and Contents
+            echo -e $cat_id "-->" $cat_name"\n"; 
+        done
         ;;
     assign)
-        echo "Assign $3 post to $4 category"
+        echo "Assigning $3 post to $4 category"
+        if sqlite3 $dbname "UPDATE post SET cat_id ='$4' WHERE id='$3'";
+        then
+            echo "Assignment Task Successfully completed"
+        else
+            echo "Something Went Wrong !"
+        fi
         ;;
     esac
     #category_function $2 $3 $4
@@ -124,3 +153,11 @@ category)
     exit 2
     ;;
 esac
+#TO-DO
+# post add title content --category cat_name
+#if parameters are empty check
+#Comments to be made properly
+#make readme.md file
+#check returned value from DB and print null in place of them
+#search and list function not working properly need work there
+#cleaning
