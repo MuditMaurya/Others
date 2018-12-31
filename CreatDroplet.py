@@ -16,5 +16,4 @@ req = urllib.request.Request('https://api.digitalocean.com/v2/droplets')
 req.add_header('Content-Type', 'application/json')
 req.add_header('Authorization','Bearer '+token) 
 r = urllib.request.urlopen(req,data)
-#urllib.request.urlopen(req,data):
 print(r.read(400))
