@@ -2,7 +2,7 @@ import urllib.request
 import json
 import urllib.parse
 import os
-token=os.getenv("TOKEN")
+token=os.getenv("DO_TOKEN")
 body = json.dumps({
 	"name":"example.com",
 	"region":"nyc3",
