@@ -4,7 +4,7 @@ on: [push]
 
 jobs: 
     # Job name is Greeting
- Create-VM:
+ build:
     name: Create VM
     # This job runs on Linux
     runs-on: ubuntu-latest
@@ -15,5 +15,5 @@ jobs:
       # This step prints an output (time) from the previous step's action.
       #- name: Echo the greeting's time
       #  run: ./scripts/create_vm.sh
-	#env:
-        #   DO_TOKEN: $${{ secrets.DO_TOKEN }}
+	# env:
+	# DO_TOKEN: $${{ secrets.DO_TOKEN }}
