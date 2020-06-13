@@ -1,6 +1,6 @@
 import urllib.request
 import os
-token=os.getenv("TOKEN")
+token=os.getenv("DO_TOKEN")
 print(token)
 req = urllib.request.Request('https://api.digitalocean.com/v2/account')
 req.add_header('Content-Type', 'application/json')

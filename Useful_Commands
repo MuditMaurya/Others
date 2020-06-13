@@ -6,3 +6,15 @@ $ python shellshare
 #When Done , hit CTRL+D
 $ exit
 #For more info visit https://shellshare.net/
+
+#AWS ssh without PEM key by adding another user with access
+### Add User
+sudo useradd -s /bin/bash -m -d /home/USERNAME  -g root USERNAME
+### Add user password and then enter the password
+sudo passwd USERNAME
+### Add user to Sudoers by adding following line >  use command "sudo visudo" to edit file
+USERNAME  ALL=(ALL:ALL) ALL
+### Enable password authentication by editing "/etc/ssh/sshd_config" : change :- 
+"PasswordAuthentication no" to "PasswordAuthentication yes"
+### Restart SSH service:
+sudo /etc/init.d/ssh restart
