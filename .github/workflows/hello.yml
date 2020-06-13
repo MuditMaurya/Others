@@ -4,18 +4,16 @@ on: [push]
 
 jobs: 
     # Job name is Greeting
+ Create-VM:
     name: Create VM
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
-	env:
-		DO_TOKEN: $${{ secrets.DO_TOKEN }}
       # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
       - name: Hello world
         run : echo "Creating new VM on Digital Ocean"
       # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: ./scripts/create_vm.sh
+      #- name: Echo the greeting's time
+      #  run: ./scripts/create_vm.sh
 	#env:
         #   DO_TOKEN: $${{ secrets.DO_TOKEN }}
