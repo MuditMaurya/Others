@@ -16,4 +16,5 @@ jobs:
       #- name: Echo the greeting's time
       #  run: ./scripts/create_vm.sh
       - name: Script
-	run : ./scripts/create_vm.sh
+        run : |
+        sh ./scripts/create_vm.sh
