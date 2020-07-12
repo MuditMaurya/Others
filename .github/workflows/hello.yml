@@ -17,4 +17,4 @@ jobs:
         - name: Script
           env : 
             DO_TOKEN: ${{ secrets.DO_TOKEN }}
-          run : ./scripts/create_vm.sh
+          run : sh ./scripts/create_vm.sh
