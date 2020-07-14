@@ -15,7 +15,7 @@ jobs:
         - name: Echo
           run : echo "Creating new VM on Digital Ocean"
         - name: Script
-          env : 
+          #env : 
             #DO_TOKEN: ${{ secrets.DO_TOKEN }}
           #run : sh ./scripts/create_vm.sh
           run : echo "A new VM created. :P"
